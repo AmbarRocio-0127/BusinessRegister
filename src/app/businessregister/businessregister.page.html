@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registro de Negocios <ion-icon name="folder"></ion-icon></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-list>
+  <ion-item>
+    <ion-label position="floating" style="text-decoration-color: white;">Nombre</ion-label>
+    <ion-input [(ngModel)]="negocio.nombre_"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating" style="text-decoration-color: white;">Tipo</ion-label>
+    <ion-input [(ngModel)]="negocio.tipo_"></ion-input>
+  </ion-item>
+
+  <ion-button color="light" expand="block" style="text-decoration-color: white;"> Agregar Imagen <ion-icon name="images"></ion-icon></ion-button>
+ 
+  <ion-item>
+    <ion-label position="floating" style="text-decoration-color: white;">Teléfono (con guiones)</ion-label>
+    <ion-input [(ngModel)]="negocio.telefono_" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating" style="text-decoration-color: white;">Dirección</ion-label>
+    <ion-input [(ngModel)]="negocio.direccion_"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating" style="text-decoration-color: white;">Latitud</ion-label>
+    <ion-input [(ngModel)]="negocio.latitud_" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating" style="text-decoration-color: white;">Longitud</ion-label>
+    <ion-input [(ngModel)]="negocio.longitud_"></ion-input>
+  </ion-item>
+</ion-list>
+
+<ion-button color="success" expand="block" (click) = "register(negocio)">Agregar Datos <ion-icon name="folder-open"></ion-icon></ion-button>
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "negociosregister",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
