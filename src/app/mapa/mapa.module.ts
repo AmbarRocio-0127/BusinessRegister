@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { BusinessregisterPageRoutingModule } from './businessregister-routing.module';
+import { MapaPageRoutingModule } from './mapa-routing.module';
 
-import { BusinessregisterPage } from './businessregister.page';
+import { MapaPage } from './mapa.page';
 import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { ComponentsModule } from '../components/components.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    BusinessregisterPageRoutingModule,
+    MapaPageRoutingModule,
     ComponentsModule,
   ],
-  declarations: [BusinessregisterPage],
+  declarations: [MapaPage],
 })
-export class BusinessregisterPageModule {}
+export class MapaPageModule {}
