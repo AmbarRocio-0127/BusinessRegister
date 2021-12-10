@@ -6,7 +6,11 @@ const routes: Routes = [
     path: '',
     loadChildren: () =>
       import('./tabs/tabs.module').then((m) => m.TabsPageModule),
+  },  {
+    path: 'editdatos',
+    loadChildren: () => import('./editdatos/editdatos.module').then( m => m.EditdatosPageModule)
   },
+
 ];
 
 @NgModule({

@@ -1,26 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Negocio } from '../models/negocio.mode';
-import {
-  ToastController,
-  LoadingController,
-  NavController,
-  Platform,
-} from '@ionic/angular';
 import { AngularFirestore } from "@angular/fire/compat/firestore";
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { ToastController, LoadingController, NavController, Platform} from '@ionic/angular';
+import { AngularFireAuth } from "@angular/fire/compat/auth";
+
 import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
-import { FirestoreService } from '../services/firestore.service';
 declare var window: any;
 
 import { decode } from 'base64-arraybuffer';
 
 @Component({
-  selector: 'app-businessregister',
-  templateUrl: './businessregister.page.html',
-  styleUrls: ['./businessregister.page.scss'],
+  selector: 'app-editdatos',
+  templateUrl: './editdatos.page.html',
+  styleUrls: ['./editdatos.page.scss'],
 })
-export class BusinessregisterPage implements OnInit {
-  negocio = {} as Negocio;
+
+export class EditdatosPage implements OnInit {
+  negocio = {} as Negocio;;
+  posts: any;
+  subscription: any;
+  id_: number;
   tempImages: string[] = [];
   base64Image: string;
   image: string;
@@ -30,80 +29,82 @@ export class BusinessregisterPage implements OnInit {
     private loadingCtrl: LoadingController,
     private afAuth: AngularFireAuth,
     private navCtrl: NavController,
-    private camera: Camera,
     private firestore: AngularFirestore,
-    public firestoreServices: FirestoreService
-  ) {}
+    private camera: Camera) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
-  //metodo asincrono encargado de registrar los negocios
-  async register(negocio: Negocio){
-    //se valida que si el metodo formValidation retorna verdadero (true), que cargue un loader para insertar los datos en firebase
-    if(this.formValidation()){
-    
-     let loader = await this.loadingCtrl.create({
-       message: "Please wait..."
-     });
-     loader.present();
- 
-     try {
-       negocio.id = this.firestoreServices.getId();
-       await this.firestore.collection("NegocioReg").add(negocio);
-     } catch (e) {
-       this.showToast(e);
-     }
- 
-     // dismiss loader
-     loader.dismiss();
- 
-     // redirect to home page
-     this.navCtrl.navigateRoot('');
- 
+  async getPosts() {
+    let loader = await this.loadingCtrl.create({
+      message: "Por favor espere..."
+    });
+    loader.present();
+
+    try {
+      this.firestore
+        .collection("NegocioReg").snapshotChanges().subscribe(data => { this.posts = data.map(e => {
+            return {
+              id: e.payload.doc.id,
+              nombre_: e.payload.doc.data()["nombre_"],
+              tipo_: e.payload.doc.data()["tipo_"],
+              telefono_: e.payload.doc.data()["telefono_"],
+              direccion_: e.payload.doc.data()["direccion_"],
+              foto_: e.payload.doc.data()["foto_"],
+              latitud_: e.payload.doc.data()["latitud_"],
+              longitud_: e.payload.doc.data()["longitud_"]
+            };
+          });
+
+          // dismiss loader
+          loader.dismiss();
+        });
+    } catch (e) {
+      this.showToast(e);
     }
-   }
+  }
 
-  formValidation() {
-    if (!this.negocio.nombre_) {
-      this.showToast('Introduzca el nombre del negocio');
+  formValidation(){
+
+    if(!this.negocio.nombre_){
+      this.showToast("Introduzca el nombre del negocio");
       return false;
     }
 
-    if (!this.negocio.tipo_) {
-      this.showToast('Introduzca el tipo del negocio');
+    if(!this.negocio.tipo_){
+      this.showToast("Introduzca el tipo del negocio");
       return false;
     }
 
-    if (!this.negocio.direccion_) {
-      this.showToast('Introduzca la dirección del negocio');
+    if(!this.negocio.direccion_){
+      this.showToast("Introduzca la dirección del negocio");
       return false;
     }
 
-    if (!this.negocio.telefono_) {
-      this.showToast('Introduzca el telefono del negocio');
+    if(!this.negocio.telefono_){
+      this.showToast("Introduzca el telefono del negocio");
       return false;
     }
 
-    if (!this.negocio.latitud_) {
-      this.showToast('Introduzca la latitud del negocio');
+    if(!this.negocio.latitud_){
+      this.showToast("Introduzca la latitud del negocio");
       return false;
     }
 
-    if (!this.negocio.longitud_) {
-      this.showToast('Introduzca la longitud del negocio');
+    if(!this.negocio.longitud_){
+      this.showToast("Introduzca la longitud del negocio");
       return false;
     }
 
     return true;
   }
 
-  showToast(message: string) {
+  showToast(message: string){
     this.toastCtrl
-      .create({
-        message: message,
-        duration: 3000,
-      })
-      .then((toastData) => toastData.present());
+    .create({
+      message: message,
+      duration: 3000
+    }).then(toastData =>toastData.present());
   }
 
   camara() {
@@ -140,7 +141,6 @@ export class BusinessregisterPage implements OnInit {
 
         // Esta es la que se usara para subirla al servicio.
         this.image = imageData;
-        this.negocio.foto_ = imageData;
       },
       (err) => {
         console.log(JSON.stringify(err));
@@ -162,9 +162,11 @@ export class BusinessregisterPage implements OnInit {
 
     const respuesta = await fetch(api, init);
     const datos = await respuesta.json();
+
     //Pesta es la variable que tiene la url de la imagen
     console.log(
       'URL DE LA IMAGEN YA SUBIDA: ' + JSON.stringify(datos.data.url)
     );
   }
+
 }

@@ -1,4 +1,11 @@
-<app-header titulo="Registro de negocio" icon=""></app-header>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Actualización de Datos</ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content class="ion-padding">
   <ion-list>
@@ -68,8 +75,8 @@
     </ion-row>
   </ion-list>
 
-  <ion-button color="success" expand="block" (click)="register(negocio)"
-    >Agregar Datos <ion-icon name="folder-open"></ion-icon
+  <ion-button color="light" expand="block" (click)="getPosts(negocio)"
+    >Actualizar Datos <ion-icon name="folder-open"></ion-icon
   ></ion-button>
 
 </ion-content>
