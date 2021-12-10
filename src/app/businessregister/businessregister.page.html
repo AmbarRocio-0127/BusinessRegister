@@ -16,13 +16,13 @@
       <ion-input [(ngModel)]="negocio.tipo_"></ion-input>
     </ion-item>
 
-    <ion-button
+    <!-- <ion-button
       color="light"
       expand="block"
       style="text-decoration-color: white"
     >
       Agregar Imagen <ion-icon name="images"></ion-icon
-    ></ion-button>
+    ></ion-button> -->
 
     <ion-item>
       <ion-label position="floating" style="text-decoration-color: white"
@@ -51,6 +51,29 @@
       >
       <ion-input [(ngModel)]="negocio.longitud_"></ion-input>
     </ion-item>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="full" shape="round" (click)="camara()">
+          <ion-icon slot="start" name="camera"></ion-icon>
+          Cámara
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="full" shape="round" (click)="galeria()">
+          <ion-icon slot="start" name="images"></ion-icon>
+          Galeri
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <img [src]="base64Image" />
+        </ion-card>
+      </ion-col>
+    </ion-row>
   </ion-list>
 
   <ion-button color="success" expand="block" (click)="register(negocio)"

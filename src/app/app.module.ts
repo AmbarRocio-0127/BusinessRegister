@@ -10,7 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environment';
-
+import { Camera } from '@awesome-cordova-plugins/camera/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -21,7 +21,10 @@ import { environment } from 'src/environments/environment';
     AngularFireModule.initializeApp(environment.FIREBASE_CONFIG),
     AngularFireAuthModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    Camera,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
