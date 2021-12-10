@@ -6,14 +6,14 @@
       <ion-label position="floating" style="text-decoration-color: white"
         >Nombre</ion-label
       >
-      <ion-input [(ngModel)]="negocio.nombre_"></ion-input>
+      <ion-input type="text" [(ngModel)]="negocio.nombre_"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating" style="text-decoration-color: white"
         >Tipo</ion-label
       >
-      <ion-input [(ngModel)]="negocio.tipo_"></ion-input>
+      <ion-input type="text" [(ngModel)]="negocio.tipo_"></ion-input>
     </ion-item>
 
     <ion-button
@@ -28,14 +28,14 @@
       <ion-label position="floating" style="text-decoration-color: white"
         >Teléfono (con guiones)</ion-label
       >
-      <ion-input [(ngModel)]="negocio.telefono_"></ion-input>
+      <ion-input type="text" [(ngModel)]="negocio.telefono_"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating" style="text-decoration-color: white"
         >Dirección</ion-label
       >
-      <ion-input [(ngModel)]="negocio.direccion_"></ion-input>
+      <ion-input type="text" [(ngModel)]="negocio.direccion_"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -56,4 +56,12 @@
   <ion-button color="success" expand="block" (click)="register(negocio)"
     >Agregar Datos <ion-icon name="folder-open"></ion-icon
   ></ion-button>
+
+  <ion-button color="light" expand="block" (click)="getPosts(negocio)"
+  >Actualizar Datos <ion-icon name="folder-open"></ion-icon
+></ion-button>
+
+<ion-button color="danger" expand="block" (click)="deleteNegocio(negocio)"
+>Eliminar Datos <ion-icon name="trash"></ion-icon
+></ion-button>
 </ion-content>
