@@ -4,21 +4,19 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { BusinessregisterPageRoutingModule } from './businessregister-routing.module';
+import { BusinesseditPageRoutingModule } from './businessedit-routing.module';
 
-import { BusinessregisterPage } from './businessregister.page';
+import { BusinesseditPage } from './businessedit.page';
 import { ComponentsModule } from '../components/components.module';
-import { NgxMaskIonicModule } from 'ngx-mask-ionic';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    BusinessregisterPageRoutingModule,
+    BusinesseditPageRoutingModule,
     ComponentsModule,
-    NgxMaskIonicModule,
   ],
-  declarations: [BusinessregisterPage],
+  declarations: [BusinesseditPage],
 })
-export class BusinessregisterPageModule {}
+export class BusinesseditPageModule {}

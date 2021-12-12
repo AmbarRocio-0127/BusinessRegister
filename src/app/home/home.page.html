@@ -1,24 +1,35 @@
 <app-header titulo="Listado de Negocios" icon=""></app-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list line="none">
-   <!--<ion-item-sliding *ngFor="let item of [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]">-->
-    <ion-item-sliding *ngFor="let negocio of arrayColeccionNegocio">
-      <ion-grid>
+  <ion-list>
+    <ion-card *ngFor="let busine of business">
+      <img [src]="busine.foto" />
+      <ion-card-header>
+        <ion-card-title>{{busine.nombre}}</ion-card-title>
+        <ion-card-subtitle>{{busine.tipo}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <address>{{busine.direccion}}</address>
+        <p>{{busine.telefono}}</p>
         <ion-row>
-          <h5>{{negocio.data.nombre_}}</h5>
-          <ion-buttons>
-            
-            <ion-button>
-          <ion-icon color="dark" name="pencil-outline"(click)="clicBotonModificar()"></ion-icon>
+          <ion-col size="12">
+            <ion-button
+              (click)="update(busine.id)"
+              shape="round"
+              color="warning"
+            >
+              <ion-icon name="pencil-outline"></ion-icon>
             </ion-button>
-
-            <ion-button>
-              <ion-icon color="danger" name="trash" (click)="deleteNegocio()"></ion-icon>
-                </ion-button>
-        </ion-buttons>
+            <ion-button
+              (click)="delete(busine.id)"
+              shape="round"
+              color="danger"
+            >
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
         </ion-row>
-      </ion-grid>
-    </ion-item-sliding>
+      </ion-card-content>
+    </ion-card>
   </ion-list>
 </ion-content>

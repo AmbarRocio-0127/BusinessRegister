@@ -7,8 +7,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./tabs/tabs.module').then((m) => m.TabsPageModule),
   },  {
-    path: 'editdatos',
-    loadChildren: () => import('./editdatos/editdatos.module').then( m => m.EditdatosPageModule)
+    path: 'businessedit',
+    loadChildren: () => import('./businessedit/businessedit.module').then( m => m.BusinesseditPageModule)
   },
 
 ];

@@ -22,6 +22,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'update/:id',
+        loadChildren: () =>
+          import('../businessedit/businessedit.module').then(
+            (m) => m.BusinesseditPageModule
+          ),
+      },
+      {
         path: 'mapa',
         loadChildren: () =>
           import('../mapa/mapa.module').then((m) => m.MapaPageModule),

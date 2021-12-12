@@ -1,47 +1,65 @@
 <app-header titulo="Registro de negocio" icon=""></app-header>
 
 <ion-content class="ion-padding">
-  <ion-list>
+  <ion-list lines="full">
     <ion-item>
       <ion-label position="floating" style="text-decoration-color: white"
         >Nombre</ion-label
       >
-      <ion-input [(ngModel)]="negocio.nombre_"></ion-input>
+      <ion-input type="text" required [(ngModel)]="negocio.nombre"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating" style="text-decoration-color: white"
         >Tipo</ion-label
       >
-      <ion-input [(ngModel)]="negocio.tipo_"></ion-input>
+      <ion-input type="text" required [(ngModel)]="negocio.tipo"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating" style="text-decoration-color: white"
-        >Teléfono (con guiones)</ion-label
+        >Teléfono</ion-label
       >
-      <ion-input [(ngModel)]="negocio.telefono_"></ion-input>
+      <ion-input
+        type="text"
+        required
+        mask="(000)-000-0000"
+        maxlength="14"
+        [(ngModel)]="negocio.telefono"
+      ></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating" style="text-decoration-color: white"
         >Dirección</ion-label
       >
-      <ion-input [(ngModel)]="negocio.direccion_"></ion-input>
+      <ion-input
+        type="text"
+        required
+        [(ngModel)]="negocio.direccion"
+      ></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating" style="text-decoration-color: white"
         >Latitud</ion-label
       >
-      <ion-input [(ngModel)]="negocio.latitud_"></ion-input>
+      <ion-input
+        type="number"
+        required
+        [(ngModel)]="negocio.latitud"
+      ></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating" style="text-decoration-color: white"
         >Longitud</ion-label
       >
-      <ion-input [(ngModel)]="negocio.longitud_"></ion-input>
+      <ion-input
+        type="number"
+        required
+        [(ngModel)]="negocio.longitud"
+      ></ion-input>
     </ion-item>
 
     <ion-row>
@@ -68,8 +86,7 @@
     </ion-row>
   </ion-list>
 
-  <ion-button color="success" expand="block" (click)="register(negocio)"
-    >Agregar Datos <ion-icon name="folder-open"></ion-icon
-  ></ion-button>
-
+  <ion-button color="success" expand="block" (click)="save()"
+    >Guardar</ion-button
+  >
 </ion-content>

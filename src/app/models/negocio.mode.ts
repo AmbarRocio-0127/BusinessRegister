@@ -1,10 +1,10 @@
 export interface Negocio {
-    id: string,
-    nombre_: string,
-    tipo_: string,
-    foto_: string,
-    telefono_: string,
-    direccion_: string,
-    latitud_: number,
-    longitud_: number
+  id?: string;
+  nombre: string;
+  tipo: string;
+  foto: string;
+  telefono: string;
+  direccion: string;
+  latitud: number;
+  longitud: number;
 }
